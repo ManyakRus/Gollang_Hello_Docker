@@ -1,10 +1,10 @@
 # Sample Dockerfile
 
 # Indicates that the windowsservercore image will be used as the base image.
-FROM scratch
+FROM mcr.microsoft.com/windows:20H2
 
 # Metadata indicating an image maintainer.
-LABEL maintainer="sanek_linux"
+LABEL maintainer="sanek"
 
 # Uses dism.exe to install the IIS role.
 # RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
@@ -12,7 +12,7 @@ LABEL maintainer="sanek_linux"
 # Creates an HTML file and adds content to this file.
 # RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 
-COPY main /
+COPY Main.exe c:\\Main.exe
 
 # Sets a command or process that will run each time a container is run from the new image.
-CMD ["/main"]
+CMD c:\\Main.exe
